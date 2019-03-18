@@ -6,10 +6,10 @@ const CELL_SIZE = 100;
 function intHashFromString(str) {
   let intHash = '';
   for (var i = 0; i < str.length; i++) {
-    console.log(str[i] + " = ",str.charCodeAt(i));
+    // console.log(str[i] + " = ",str.charCodeAt(i));
     intHash += str.charCodeAt(i);
   }
-  console.log("intHash", intHash);
+  // console.log("intHash", intHash);
   return intHash;
 }
 
@@ -32,46 +32,46 @@ function sumOfDigits(stringOfInts) {
 
 function eightIntegersFromIntHash(intHash) {
   let hash = intHash;
-  console.log("Begin eightIntegersFromIntHash", hash);
+  // console.log("Begin eightIntegersFromIntHash", hash);
 
   if (hash.length < 8) {
     switch (hash.length) {
       case 2:
-        console.log("Length 2, POW 5");
+        // console.log("Length 2, POW 5");
         hash = Math.pow(parseInt(hash), 5).toString();
         break;
       case 3:
-        console.log("Length 3, POW 4");
+        // console.log("Length 3, POW 4");
         hash = Math.pow(parseInt(hash), 4).toString();
         break;
       case 4:
-        console.log("Length 4, POW 3");
+        // console.log("Length 4, POW 3");
         hash = Math.pow(parseInt(hash), 3).toString();
         break;
       default:
-        console.log("Default, POW 2");
+        // console.log("Default, POW 2");
         hash = Math.pow(parseInt(hash), 2).toString();
     }
-    console.log("Done stretching:", hash);
+    // console.log("Done stretching:", hash);
   }
 
   let sumOfHashDigits = sumOfDigits(hash);
-  console.log("sumOfHashDigits",sumOfHashDigits);
+  // console.log("sumOfHashDigits",sumOfHashDigits);
 
   // Make the length of hash divisible by 8
   // by adding the first part of the string
   // to the end, as needed.
   hash += hash.substr(0,8-hash.length % 8);
-  console.log("Made divisible by eight:", hash);
+  // console.log("Made divisible by eight:", hash);
   let digits = hash.length / 8;
-  console.log("Digits per portion:",digits);
+  // console.log("Digits per portion:",digits);
 
   let regex = new RegExp('.{' + digits + '}', "g");
   let eightStrings = hash.match(regex);
-  console.log("eightStrings:",eightStrings);
+  // console.log("eightStrings:",eightStrings);
 
   let eightIntegers = eightStrings.map((str) => sumOfDigits(str)+sumOfHashDigits);
-  console.log("eightIntegers",eightIntegers);
+  // console.log("eightIntegers",eightIntegers);
 
   return eightIntegers;
 }
@@ -86,7 +86,7 @@ function recipeFromString(str) {
 }
 
 function generate() {
-  canvas = document.getElementById('gameCanvas');
+  canvas = document.getElementById('canvas');
   ctx = canvas.getContext('2d');
 
   const INPUT = document.getElementById('input').value || '13 Trillion Avatars';
@@ -97,10 +97,10 @@ function generate() {
 
   colorRect(0,0,6*CELL_SIZE,6*CELL_SIZE, BG_COLOR);
 
-  console.log("RECIPE:",RECIPE);
-  console.log();
-  console.log("::::::::::::::::::::::::::::::::::::::::::::");
-  console.log("::::::::::::::::::::::::::::::::::::::::::::");
+  // console.log("RECIPE:",RECIPE);
+  // console.log();
+  // console.log("::::::::::::::::::::::::::::::::::::::::::::");
+  // console.log("::::::::::::::::::::::::::::::::::::::::::::");
 
 
   // OUTER COLUMNS
